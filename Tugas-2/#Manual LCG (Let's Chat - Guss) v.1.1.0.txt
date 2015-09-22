@@ -1,0 +1,23 @@
+Manual Penggunaan Aplikasi Console LCG (Let's Chat - Guss) v.1.1.0
+
+(Lihat Manual Penggunaan Aplikasi Console LCG (Let's Chat - Guss) v.1.0.0)
+
+File yg dibutuhkan	:
+- ServerLCG.java
+- ClientLCG.java
+- FileInput.java
+- guss_file1.txt
+- guss_file2.txt
+
+Step1 compiling		: (Lihat Manual LCG v.1.0.0)
+
+Step2 running program server	: (Lihat Manual LCG v.1.0.0)
+
+Step3 running program client	: (Lihat Manual LCG v.1.0.0)
+- Ketikkan kata kunci "Service Menu"
+- Pilih menu sesuai kebutuhan
+
+nb. Pada pembuatannya, program server diatur agar
+    dapat memberikan layanan pembacaan file sesuai kebutuhan client
+
+Terima Kasih dan Selamat Menggunakan
