@@ -5,4 +5,4 @@ Nama	: Service Oriented Architecture
 Dosen	: Dr. I Gusti Bagus Baskara Nugraha
 Hari	: Selasa
 Pukul	: 13.00 s.d. 15.00
-Ruang	: Lecture 1 (CSC)
+Ruang	: Lecture 2 (CSC)

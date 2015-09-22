@@ -5,4 +5,4 @@ Nama	: Pengembangan Aplikasi Berorientasi Objek
 Dosen	: Dr. I Gusti Bagus Baskara Nugraha
 Hari	: Selasa
 Pukul	: 15.00 s.d. 17.00
-Ruang	: Lecture 1 (CSC)
+Ruang	: Lecture 2 (CSC)

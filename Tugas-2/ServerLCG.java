@@ -30,7 +30,7 @@ public class ServerLCG {
 		Thread guss_Thd1 = new Thread (guss_getIt);
 		guss_Thd1.start ();
 		
-		Guss_SendMsgToClientThd guss_sendIt = new Guss_SendMsgToClientThd (guss_CS);
+		Guss_SendMsgToClientThd guss_sendIt = new Guss_SendMsgToClientThd (guss_CS, null);
 		Thread guss_Thd2 = new Thread (guss_sendIt);
 		guss_Thd2.start ();
 	}
@@ -50,10 +50,17 @@ class Guss_GetMsgFromClientThd implements Runnable {
 			guss_BR = new BufferedReader (new InputStreamReader (this.guss_CS_Ret.getInputStream ()));
 
 			String guss_CMsg = null;
+			int idFile = Integer.valueOf (guss_CMsg).intValue ();
 			while (true) {
 				while ((guss_CMsg = guss_BR.readLine ()) != null) {
-					if (guss_CMsg.equals ("EXIT"))
-						break;
+					if (guss_CMsg.equals ("EXIT")) break;
+					else if ((idFile >= 1) && (idFile <= 2)) {
+						FileInput guss_fI = new FileInput (idFile);
+						DataInputStream guss_DIS = guss_fI.getDIS ();
+						Guss_SendMsgToClientThd guss_sendFileCnt = new Guss_SendMsgToClientThd (guss_CS_Ret, guss_DIS);
+						Thread guss_Thd3 = new Thread (guss_sendFileCnt);
+						guss_Thd3.start ();
+					}
 					
 					System.out.println ("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b Client		: " + guss_CMsg);
 					System.out.print ("You (Server)	: ");
@@ -72,10 +79,12 @@ class Guss_GetMsgFromClientThd implements Runnable {
 
 class Guss_SendMsgToClientThd implements Runnable {
 	Socket guss_CS_Ret = null;
+	DataInputStream guss_DIS_Ret = null;
 	PrintWriter guss_PW = null;
 
-	public Guss_SendMsgToClientThd (Socket guss_CS_Ret) {
+	public Guss_SendMsgToClientThd (Socket guss_CS_Ret, DataInputStream guss_DIS_Ret) {
 		this.guss_CS_Ret = guss_CS_Ret;
+		this.guss_DIS_Ret = guss_DIS_Ret;
 	}
 	
 	public void run () {
@@ -83,10 +92,13 @@ class Guss_SendMsgToClientThd implements Runnable {
 			guss_PW = new PrintWriter (new OutputStreamWriter (this.guss_CS_Ret.getOutputStream ()));
 
 			while (true) {
-				BufferedReader guss_BR = new BufferedReader (new InputStreamReader (System.in));
-
+			
 				String guss_SMsg = null;
-				guss_SMsg = guss_BR.readLine ();
+				if (this.guss_DIS_Ret == null) {
+					BufferedReader guss_BR = new BufferedReader (new InputStreamReader (System.in));
+					guss_SMsg = guss_BR.readLine ();
+				}
+				else guss_SMsg = this.guss_DIS_Ret.readLine();
 
 				guss_PW.println (guss_SMsg);
 				guss_PW.flush ();

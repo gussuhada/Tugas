@@ -12,37 +12,46 @@
      */  
       
     public class FileInput {  
+        DataInputStream dis = null;  
       
-        public static void main(String[] args) {  
+        public FileInput (int idFile_int) {  
       
-            File file = new File("guss.txt");  
+            String idFile_str = "guss_file" + String.valueOf (idFile_int) + ".txt";
+			File file = new File (idFile_str);  
             FileInputStream fis = null;  
             BufferedInputStream bis = null;  
             DataInputStream dis = null;  
       
             try {  
-                fis = new FileInputStream(file);  
+                fis = new FileInputStream (file);  
       
                 // di sini BufferedInputStream ditambahkan untuk pembacaan secara cepat.  
-                bis = new BufferedInputStream(fis);  
-                dis = new DataInputStream(bis);  
+                bis = new BufferedInputStream (fis);  
+                dis = new DataInputStream (bis);  
+				this.dis = dis;
       
                 // dis.available() akan mengembalikan nilai 0 jika file sudah tidak punya baris lagi.  
-                while (dis.available() != 0) {  
+                // while (dis.available () != 0) {  
       
                     // statement ini membaca baris dari file dan menampilkannya ke console.  
-                    System.out.println(dis.readLine());  
-                }  
+                    // System.out.println(dis.readLine());  
+					// return dis;
+                // }  
       
                 // buang semua resources setelah menggunakannya.  
-                fis.close();  
-                bis.close();  
-                dis.close();  
+                fis.close ();  
+                bis.close ();  
+                // dis.close ();  
       
             } catch (FileNotFoundException e) {  
-                e.printStackTrace();  
+                e.printStackTrace ();  
             } catch (IOException e) {  
-                e.printStackTrace();  
+                e.printStackTrace ();  
             }  
         }  
+		
+		public DataInputStream getDIS () {
+			return this.dis;
+			// this.dis.close (); 
+		}
     }  
