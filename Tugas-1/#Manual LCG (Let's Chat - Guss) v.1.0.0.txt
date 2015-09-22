@@ -1,0 +1,44 @@
+Manual Penggunaan Aplikasi Console LCG (Let's Chat - Guss) v.1.0.0
+
+Dokumentasi simulasi running program pada PC developer
+
+Bahasa pemrograman	: Java
+Environment		: JDK versi 8u60
+OS			: Windows 8.1 64bit
+Basis program		: Socket TCP
+
+File yg dibutuhkan	:
+- ServerLCG.java
+- ClientLCG.java
+
+Step1 compiling		: (setelah instal JDK)
+- Tempatkan file2 tersebut dalam sebuah direktori
+- Jalankan cmd, ubah direktori ke lokasi kedua file
+- Compile program server dengan perintah 'javac ServerLCG.java
+- Compile program client dengan perintah 'javac ClientLCG.java
+
+Step2 running program server	:
+- Jalankan cmd, ubah direktori ke lokasi file
+- Run program server dengan perintah 'java ServerLCG'
+- Server sudah aktif dengan status menunggu
+- Jika ada akses dr sebuah client dgn IP tertentu & port yg sesuai,
+  akan ada pemberitahuan perubahan status
+  dan program akan available utk mengirim pesan
+- Ketik pesan di layar, & tekan enter untuk mengirim
+- Jika ada pesan yg masuk dari client, pesan akan muncul di layar
+- Jika client mengakhiri koneksi, status kembali berubah menunggu
+- Ketik exit utk keluar
+
+Step3 running program client	:
+- Jalankan cmd, ubah direktori ke lokasi file
+- Run program client dengan perintah 'java ClientLCG'
+- Client sudah aktif dan program akan available utk mengirim pesan
+- Ketik pesan di layar, & tekan enter untuk mengirim
+- Jika ada pesan yg masuk dari server, pesan akan muncul di layar
+- Ketik exit utk mengakhiri koneksi dan keluar
+
+nb. Pada pembuatannya, program diatur agar setiap program
+    menggunakan sebuah socket untuk dapat saling berkomunikasi
+    dengan mengirim dan menerima data
+
+Terima Kasih dan Selamat Menggunakan
